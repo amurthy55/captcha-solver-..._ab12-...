@@ -1,0 +1,59 @@
+
+              <!DOCTYPE html>
+<html>
+  <head>
+    <base target="_top">
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 30px;
+        background: #f6f8fa;
+      }
+      h2 {
+        color: #333;
+      }
+      select, button {
+        font-size: 16px;
+        padding: 8px;
+        margin-top: 10px;
+      }
+      #status {
+        margin-top: 20px;
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>Coded by LLM</h2>
+    <form id="emailForm" onsubmit="handleSubmit(event)">
+      <select id="emailSelect" required>
+        <option value="">--Select Email--</option>
+        <option>user1@example.com</option>
+        <option>user2@example.com</option>
+        <option>user3@example.com</option>
+        <option>user4@example.com</option>
+        <option>user5@example.com</option>
+        <option>user6@example.com</option>
+        <option>user7@example.com</option>
+        <option>user8@example.com</option>
+        <option>user9@example.com</option>
+        <option>user10@example.com</option>
+      </select>
+      <br>
+      <button type="submit">Submit</button>
+    </form>
+
+    <div id="status"></div>
+
+    <script>
+      function handleSubmit(event) {
+        event.preventDefault();
+        const email = document.getElementById("emailSelect").value;
+        document.getElementById("status").innerText = "Processing...";
+        google.script.run
+          .withSuccessHandler(msg => document.getElementById("status").innerText = msg)
+          .processEmail(email);
+      }
+    </script>
+  </body>
+</html>
